@@ -1,18 +1,18 @@
 # SmartBuildingTracker
 This is Real-time monitoring of building occupancy, WiFi-based indoor positioning system which have multi-purpose applications.
-#Applications
+# Applications
 _1. This can be used for crowd tracking and analysis for a smooth transition of the workforce in office spaces after pandemic struck world_
 _2. This can be used with online restaurant booking apps as an additional feature to monitor and output crowd densities in restraunts_
 _3. This can be used as analytics for business busy hour tracking and help monetize the business better_
 _4. Search and rescue operations in case of disasters would be better with help of this app_
 _5. This could be used for checking up abnormal patterns in cases of future protests_
 
-#How did we build this?
+# How did we build this?
 Frontend- 
 Backend- Mac address of access points and signal strength of devices connected to them and find the distance. This was one approach to finding the number of devices connected to the network and in the building. The second one was finding the IP address and with that checking how many devices are there at the geolocation. The third thing is using media pipes and running them through surveillance systems and counting the number of people present.
 
 
-#Future aspects
+# Future aspects
 We believe that this could be deployed at various public interest places. The future technological aspect is that we could simply integrate the camera code and partner up as an extension to various surveillance system technologies.
 Also for analytics, we think we could run the data through machine running models to check for abnormal patterns and analytics for tracking it improving the businesses
 
