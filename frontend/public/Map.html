@@ -17,11 +17,13 @@
     <div id="map" class="mazemap"></div>
 
     <script>
+        Mazemap.mapboxgl.accessToken = 'pk.eyJ1IjoibHVjcmF4IiwiYSI6ImNrdjVhMngxcjduajYycHQ5aXhrOGQybXIifQ.YLr5is212pFMMWy56WcP0Q';
         var myMap = new Mazemap.Map({
             // container id specified in the HTML
             container: 'map',
             campuses: 1,
-            center: {lng: -78.4985453236003, lat: 38.030998758211865},
+            style: 'mapbox://styles/mapbox/light-v10',
+            center: {lng: -122.2639213, lat: 37.8645876},
             bearing: 17.514266117970237,
             pitch: 55.5,
             zoom: 17.567747750432794,
@@ -39,83 +41,159 @@
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [-78.4985453236003, 38.030998758211865]
+                            "coordinates": [-122.2639213, 37.8645876]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [-78.4985453236005, 38.030998758211865]
+                            "coordinates": [-122.2639211, 37.8646001]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [-78.4985453236013, 38.030998758211865]
+                            "coordinates": [-122.2639199, 37.8645876]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [-78.4985453236022, 38.030998758211865]
+                            "coordinates": [-122.2639213, 37.8645876]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [-78.4985453236008, 38.030998758211875]
+                            "coordinates": [ -122.2639057, 37.8645871]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [-78.499717, 38.031206]
+                            "coordinates": [-122.2639176, 37.8645911]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [ -78.499771, 38.031138]
+                            "coordinates": [-122.2639057, 37.8645871]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [ -78.499953, 38.031273]
+                            "coordinates": [-122.2639009, 37.864591]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [ -78.4999566, 38.031273]
+                            "coordinates": [-122.2639057, 37.8645871]
                             }
                         },
                         {
                             "type": "feature",
                             "geometry": {
                             "type": "Point",
-                            "coordinates": [ -78.499963, 38.031273]
+                            "coordinates": [-122.2639057, 37.8645871]
                             }
                         },
+                        {
+                            "type": "feature",
+                            "geometry": {
+                            "type": "Point",
+                            "coordinates": [-122.2639057, 37.864592]
+                            }
+                        },
+                        {
+                            "type": "feature",
+                            "geometry": {
+                            "type": "Point",
+                            "coordinates": [-122.2639157, 37.8646871]
+                            }
+                        },
+                        {
+                            "type": "feature",
+                            "geometry": {
+                            "type": "Point",
+                            "coordinates": [-122.2639001, 37.8646981]
+                            }
+                        },
+                        {
+                            "type": "feature",
+                            "geometry": {
+                            "type": "Point",
+                            "coordinates": [-122.2639170, 37.864661]
+                            }
+                        },
+
+                        {
+                            "type": "feature",
+                            "geometry": {
+                            "type": "Point",
+                            "coordinates": [-122.2639170, 37.864661]
+                            }
+                        },
+
                         ],
                   }
-                  
+
             });
+
+
+            myMap.addLayer(
+                {
+                'id': 'add-3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                'fill-extrusion-color': '#636e72',
+
+                // Use an 'interpolate' expression to
+                // add a smooth transition effect to
+                // the buildings as the user zooms in.
+                'fill-extrusion-height': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                15,
+                0,
+                15.05,
+                ['get', 'height']
+                ],
+                'fill-extrusion-base': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                15,
+                0,
+                15.05,
+                ['get', 'min_height']
+                ],
+                'fill-extrusion-opacity': 0.8
+                }
+              });
+
+
 
 
         myMap.addLayer({
             "id": "heatpoints",
             "type": "heatmap",
             "source": "heatpoints",
-            "maxzoom": 24,
+            "maxzoom": 22,
             "paint": {
                 // Increase the heatmap weight based on frequency and property magnitude
                 "heatmap-weight": 1,
@@ -125,7 +203,7 @@
                     "interpolate",
                     ["linear"],
                     ["zoom"],
-                    16, 0.2,
+                    18, 0.2,
                     22, 1
                 ],
                 // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
@@ -150,7 +228,7 @@
                     10, 5,
                     22, 30
                 ],
-                "heatmap-opacity": 0.8
+                "heatmap-opacity": 0.6
             }
         });
     });
